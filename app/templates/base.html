@@ -7,9 +7,20 @@
 {% block navbar %}
     <nav class="navbar navbar-default">
             Microblog:
-        <a href="/index">Home</a>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('login') }}">Login</a>
     </nav>
 {% endblock %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
 
 {% block content %}
     
