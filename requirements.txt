@@ -5,4 +5,3 @@ flask_migrate
 flask_login
 flask_wtf
 wtforms
-autopep8
