@@ -90,6 +90,7 @@ def user(username):
 
 
 @appy.route("/edit_profile", methods=['GET', 'POST'])
+@login_required
 def edit_profile():
     form = EditProfileForm()
     if form.validate_on_submit():
