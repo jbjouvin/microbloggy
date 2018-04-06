@@ -4,5 +4,5 @@ venv/
 email.env
 app.db
 .log*.*
-*.db
+app.db
 logs/
