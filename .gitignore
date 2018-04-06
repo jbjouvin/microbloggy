@@ -5,3 +5,4 @@ email.env
 app.db
 .log*.*
 *.db
+logs/
