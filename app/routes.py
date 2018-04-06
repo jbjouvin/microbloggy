@@ -28,7 +28,7 @@ def index():
         flash('Your post is now live!')
         return redirect(url_for('index'))
     posts = current_user.followed_posts().all()
-    return render_template('index.j2', title='Home', posts=posts, form=form)
+    return render_template('index.html', title='Home', posts=posts, form=form)
 
 
 @appy.route('/login', methods=['GET', 'POST'])
@@ -53,7 +53,7 @@ def login():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
-    return render_template('login.j2', title='Sign In', form=form)
+    return render_template('login.html', title='Sign In', form=form)
 
 
 @appy.route("/logout")
@@ -74,7 +74,7 @@ def register():
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
-    return render_template('register.j2', title='Register', form=form)
+    return render_template('register.html', title='Register', form=form)
 
 
 @appy.route("/user/<username>")
@@ -85,7 +85,7 @@ def user(username):
         {'author': user, 'body': 'Test post #1'},
         {'author': user, 'body': 'Test post #2'}
     ]
-    return render_template('user.j2', user=user, posts=posts)
+    return render_template('user.html', user=user, posts=posts)
 
 
 @appy.route("/edit_profile", methods=['GET', 'POST'])
@@ -101,7 +101,7 @@ def edit_profile():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
-    return render_template('edit_profile.j2', title='Edit Profile',
+    return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
 
 
@@ -141,4 +141,4 @@ def unfollow(username):
 @login_required
 def explore():
     posts = Post.query.order_by(Post.timestamp.desc()).all()
-    return render_template('index.j2', title='Explore', posts=posts)
+    return render_template('index.html', title='Explore', posts=posts)
