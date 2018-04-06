@@ -3,3 +3,4 @@ venv/
 .vscode/
 email.env
 app.db
+.log*.*
