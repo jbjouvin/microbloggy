@@ -96,5 +96,20 @@
         </div>
         {%endfor%}
     </h3>
-
+    <hr>
+    <h3>
+        <i class="far fa-star"></i>
+        Loisirs {%for spareTime in spareTime%}
+        <h5 class="spare-time-type">
+            {{spareTime.type}}
+        </h5>
+        {%for spareElt in spareTime.list%}
+        <h6>
+            <ul>
+                <li class="spare-time-item">{{spareElt}}</li>
+            </ul>
+        </h6>
+        {%endfor%} {%endfor%}
+    </h3>
+    <br>
     {% endblock %}

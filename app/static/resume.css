@@ -89,11 +89,14 @@
 
 .spare-time-type {
   margin: 20px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .spare-time-item {
-  font-size: 18px;
+  font-size: 16px;
   margin-left: 20px;
+  font-style: italic;
 }
 
 /* BORDEL */
