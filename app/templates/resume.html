@@ -1,0 +1,100 @@
+{% extends "base.html" %} {% import 'bootstrap/wtf.html' as wtf %} {% block app_content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='resume.css') }}">
+
+<div class="container">
+    <div class="col-12 col-md-6" id="nameJob">
+        <h3 class="nameJobName">{{person.name}} {{person.lastname}}</h3>
+        <h4 class="nameJobJob">{{person.jobTitle}}</h4>
+    </div>
+    <div class="col-12 col-md-6">
+        <div class="col-6 col-lg-8" id="admin">
+            <i class="far fa-map">
+                <a class="lienUtile" href="https://www.google.fr/maps/place/{{person.city}}">{{person.city}}, {{person.country}}</a>
+            </i>
+            <br>
+            <i class="fab fa-linkedin-in">
+                <a class="lienUtile" href="{{person.linkedin}}">linkedin</a>
+            </i>
+            <br>
+            <i class="far fa-envelope">
+                <a class="lienUtile" href=" mailto:{{person.mail}}">{{person.mail}}</a>
+            </i>
+            <br>
+            <i class="fab fa-github-alt">
+                <a class="lienUtile" href="{{person.github}}">github</a>
+            </i>
+            <br>
+            <i class="fab fa-gitlab">
+                <a class="lienUtile" href="{{person.github}}">gitlab</a>
+            </i>
+        </div>
+        <div class="col-6 col-lg-4" id="person-photo">
+            <img src="{{person.avatar}}" align="right" border="75px" class="img-circle" width="175" height="175">
+        </div>
+    </div>
+    {% for skill in skills %}
+    <div class="col-12 col-md-6" id="expertiseTechnique">
+        <h4>{{skill.title}}
+        </h4>
+        {% for item in skill.skillItem %}
+        <h6 class="skill badge badge-pill badge-info">{{item}}</h6>
+        {% endfor %}
+    </div>
+    {% endfor %}
+    <div class="col-12 col-md-6" id="competencesTechniques">
+        <h4>{{techskills.title}}
+        </h4>
+        {%for techy in techskills.skillItem%}
+        <div class="progress">
+            <div class="progress-bar progress-bar-{{techy.levelColor}}" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+                style="width: {{techy.level}}">{{techy.names}}</div>
+        </div>
+        {%endfor%}
+    </div>
+    <h3>
+        <i class="far fa-building"></i> Experiences</h3>
+    {%for xp in xp%}
+    <div class="col-12" id={{xp.title}}>
+        <h5 class="titre-long">
+            {{xp.titleLong}} @
+            <a class="link-company" href="{{xp.companyLink}}">{{xp.company}}</a>
+            <img class="company-image" align="right" height="100" width="100" src="{{xp.companyLogo}}" alt="{{xp.company}}">
+            <h6 class="company-date">{{xp.dateStart}} => {{xp.dateEnd}}</h6>
+            {%for mission in xp.missions%}
+            <h5 class="mission-title">{{mission.title}}
+                <ul class="list-task">
+                    {%for task in mission.tasks%} {% if not task.miniTasks %}
+                    <li class="mission-task">{{task}}</li>
+                    {%else%}
+                    <ol>
+                        {%for mini in task.miniTasks%}
+                        <li class="mini-task">{{mini}}</li>
+                        {%endfor%}
+                    </ol>
+                    {%endif%} {%endfor%}
+                </ul>
+            </h5>
+            {%endfor%}
+            <h5 class="tech-env-title">Environnement Technique :
+                <br> {%for techEnv in xp.technicalEnv%}
+                <h6 class="badge badge-pill badge-info technical-pastille">{{techEnv}}</h6>
+                {%endfor%}
+            </h5>
+        </h5>
+        <hr>
+    </div>
+    {%endfor%}
+    <h3>
+        <i class="fas fa-graduation-cap"></i>
+        Formations {%for school in schools%}
+        <div class="col-12 school-studies">
+            <img class="school-image" align="right" height="60" width="60" src="{{school.schoolLogo}}">
+            <h5 class="school-studie">{{school.formationName}}
+                <a class="school-place" href="{{school.schoolLink}}">{{school.school}}</a>
+            </h5>
+            <span class="school-date">{{school.place}}, {{school.date}}</span>
+        </div>
+        {%endfor%}
+    </h3>
+
+    {% endblock %}

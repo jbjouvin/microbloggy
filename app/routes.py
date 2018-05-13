@@ -6,6 +6,9 @@ from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
 
+import json
+import requests
+
 
 @appy.before_request
 def before_request():
@@ -34,8 +37,9 @@ def index():
         if posts.has_next else None
     prev_url = url_for('index', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template('index.html', title='Home', posts=posts.items, form=form, next_url=next_url,
-                           prev_url=prev_url)
+    return render_template(
+        'index.html', title='Home', posts=posts.items, form=form, next_url=next_url,
+        prev_url=prev_url)
 
 
 @appy.route('/login', methods=['GET', 'POST'])
@@ -95,8 +99,9 @@ def user(username):
         if posts.has_next else None
     prev_url = url_for('user', username=user.username, page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template('user.html', user=user, posts=posts.items,
-                           next_url=next_url, prev_url=prev_url)
+    return render_template(
+        'user.html', user=user, posts=posts.items,
+        next_url=next_url, prev_url=prev_url)
 
 
 @appy.route("/edit_profile", methods=['GET', 'POST'])
@@ -112,8 +117,9 @@ def edit_profile():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
-    return render_template('edit_profile.html', title='Edit Profile',
-                           form=form)
+    return render_template(
+        'edit_profile.html', title='Edit Profile',
+        form=form)
 
 
 @appy.route('/follow/<username>')
@@ -158,5 +164,21 @@ def explore():
         if posts.has_next else None
     prev_url = url_for('index', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template('index.html', title='Explore', posts=posts.items, next_url=next_url,
-                           prev_url=prev_url)
+    return render_template(
+        'index.html', title='Explore', posts=posts.items, next_url=next_url,
+        prev_url=prev_url)
+
+
+# RESUME
+@appy.route('/resume')
+def resume():
+    url = "http://jbjouvin.pro.s3-website-eu-west-1.amazonaws.com/json/"
+    resume_files = ["person", "skills", "techskills", "schools", "spareTime", "xp"]
+    json_out = {}
+    for file in resume_files:
+        response = requests.get(url + file + ".json")
+        json_out[file] = response.json()[file]
+    return render_template(
+        'resume.html', title='Resume', person=json_out['person'],
+        skills=json_out['skills'], techskills=json_out['techskills'], schools=json_out['schools'],
+        spareTime=json_out['spareTime'], xp=json_out['xp'])

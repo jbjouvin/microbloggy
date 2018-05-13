@@ -1,0 +1,153 @@
+.progress {
+  margin-bottom: 5px;
+  height: 1.7rem;
+}
+/* PERSON */
+
+.nameJobName {
+  font-size: 3rem;
+}
+
+.nameJobJob {
+  font-size: 1.9rem;
+}
+
+/* MISSIONS EXPERINCES */
+
+.titre-long {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.mission-title {
+  font-size: 1.6rem;
+  margin: 18px;
+}
+
+.list-task {
+  margin: 18px;
+}
+
+.mission-task {
+  font-size: 1.55rem;
+  margin-left: 50px;
+  padding: 3px;
+}
+
+.mini-task {
+  font-size: 1.55rem;
+  margin-left: 65px;
+  padding: 3px;
+}
+
+.tech-env-title {
+  font-size: 1.6rem;
+  font-style: italic;
+  margin: 18px;
+}
+
+.technical-pastille {
+  margin-right: 5px;
+}
+
+#header {
+  margin-top: 20px;
+  margin-bottom: 75px;
+}
+
+.skill {
+  margin-left: 5px;
+}
+
+.skill-title {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+/* SCHOOLS */
+
+.school-studies {
+  margin: 20px;
+}
+
+.school-studie {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.school-date {
+  font-size: 1.6rem;
+  margin: 20px;
+}
+
+/* LOISIRS */
+
+.spare-time {
+  margin: 20px;
+}
+
+.spare-time-type {
+  margin: 20px;
+}
+
+.spare-time-item {
+  font-size: 18px;
+  margin-left: 20px;
+}
+
+/* BORDEL */
+
+.fa {
+  margin-right: 10px;
+  font-size: 1.7rem;
+}
+
+.badge {
+  background-color: #17a2b8;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+.progress-bar-success {
+  background-color: #0170a3 !important;
+}
+
+.progress-bar-warning {
+  background-color: #3686aa !important;
+}
+
+.progress-bar-danger {
+  background-color: #6998ad !important;
+}
+
+/* 4 */
+
+#etudesConception {
+  margin-bottom: 20px;
+}
+#competencesTechniques {
+  margin-bottom: 20px;
+}
+#expertiseTechnique {
+  margin-bottom: 20px;
+}
+#assistanceFormation {
+  margin-bottom: 20px;
+}
+
+/*Hide menu when scroll down*/
+
+.nav-up {
+  display: none;
+}
+
+@media print {
+  .pagebreaker {
+    page-break-before: always;
+  }
+}
+
+.lienUtile{
+  margin-left: 8px;
+}
