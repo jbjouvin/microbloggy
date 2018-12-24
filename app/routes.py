@@ -171,14 +171,10 @@ def explore():
 
 # RESUME
 @appy.route('/resume')
+@login_required
 def resume():
-    url = "http://jbjouvin.pro.s3-website-eu-west-1.amazonaws.com/json/"
-    resume_files = ["person", "skills", "techskills", "schools", "spareTime", "xp"]
-    json_out = {}
-    for file in resume_files:
-        response = requests.get(url + file + ".json")
-        json_out[file] = response.json()[file]
+    out = appy.config['JSON_RESUME']
     return render_template(
-        'resume.html', title='Resume', person=json_out['person'],
-        skills=json_out['skills'], techskills=json_out['techskills'], schools=json_out['schools'],
-        spareTime=json_out['spareTime'], xp=json_out['xp'])
+        'resume.html', title='Resume', person=out['person'],
+        skills=out['skills'], techskills=out['techskills'], schools=out['schools'],
+        spareTime=out['spareTime'], xp=out['xp'])
