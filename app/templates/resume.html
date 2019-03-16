@@ -80,6 +80,17 @@
                 {%endfor%}
 
             </h5>
+            {%if mission.divLinks %}
+                <h5 class="mission-title">Links
+                    <ul class="list-task">
+                        {%for link in mission.divLinks%}
+                        <li class="mission-task">
+                            <a href={{link.link}}>{{link.title}}</a>
+                        </li>
+                        {%endfor%}
+                    </ul>
+                </h5>
+            {% endif %}
             {%endfor%}
             <h5 class="tech-env-title">Environnement Technique :
                 <br> {%for techEnv in xp.technicalEnv%}
