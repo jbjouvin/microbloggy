@@ -173,8 +173,6 @@ def explore():
 @appy.route('/resume')
 @login_required
 def resume():
-    out = appy.config['JSON_RESUME']
+    content = appy.config['JSON_RESUME']
     return render_template(
-        'resume.html', title='Resume', person=out['person'],
-        skills=out['skills'], techskills=out['techskills'], schools=out['schools'],
-        spareTime=out['spareTime'], xp=out['xp'])
+        'resume.html', title='Resume', **content)
