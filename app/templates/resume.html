@@ -73,6 +73,12 @@
                     </ol>
                     {%endif%} {%endfor%}
                 </ul>
+                {%for link in mission.divLinks%}
+                    <li>
+                        <a href="{{link.link}}">{{link.title}}</a>
+                    </li>
+                {%endfor%}
+
             </h5>
             {%endfor%}
             <h5 class="tech-env-title">Environnement Technique :
