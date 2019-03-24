@@ -4,6 +4,8 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from flask_mail import Mail
+from flask_moment import Moment
 
 # Softbank robotics documentation pepper proxim'it
 appy = Flask(__name__)
@@ -16,6 +18,9 @@ Migrate = Migrate(appy, db)
 
 Login = LoginManager(appy)
 Login.login_view = "login"
+
+mail = Mail(appy)
+moment=Moment(appy)
 
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
